@@ -15,7 +15,6 @@ def convert_ckd_to_ogg(input_file, output_file):
             raise ValueError("O arquivo deve ter a extensão .wav.ckd.")
         
         # Extração direta do conteúdo do .ckd
-        # Supondo que .ckd é um formato contendo diretamente um .wav válido
         temp_wav = input_file.replace('.ckd', '_temp.wav')
         with open(input_file, 'rb') as ckd_file:
             wav_data = ckd_file.read()
@@ -36,11 +35,14 @@ def convert_ckd_to_ogg(input_file, output_file):
     except Exception as e:
         print(f"Erro durante a conversão: {e}")
 
-# Exemplo de uso
-input_ckd = "exemplo.wav.ckd"
-output_ogg = "exemplo.ogg"
-convert_ckd_to_ogg(input_ckd, output_ogg)
-
-# Adiciona uma pausa para manter o terminal aberto
-input("Pressione Enter para sair...")
+# Execução principal do script com tratamento para evitar fechamento automático
+try:
+    input_ckd = "exemplo.wav.ckd"
+    output_ogg = "exemplo.ogg"
+    convert_ckd_to_ogg(input_ckd, output_ogg)
+except Exception as e:
+    print(f"Erro inesperado: {e}")
+finally:
+    # Pausa no final para evitar fechamento automático
+    input("\nPressione Enter para sair...")
 

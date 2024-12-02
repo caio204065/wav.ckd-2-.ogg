@@ -40,3 +40,7 @@ def convert_ckd_to_ogg(input_file, output_file):
 input_ckd = "exemplo.wav.ckd"
 output_ogg = "exemplo.ogg"
 convert_ckd_to_ogg(input_ckd, output_ogg)
+
+# Adiciona uma pausa para manter o terminal aberto
+input("Pressione Enter para sair...")
+
